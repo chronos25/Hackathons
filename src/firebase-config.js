@@ -1,8 +1,8 @@
-import * as firebase from "firebase";
-import "firebase/database";
-    //uuid = require('uuid');
+//import firebase from 'firebase/compat/app';
+//import "firebase/database";
+//uuid = require('uuid');
 
-let firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBkJD8mBUs8SyXhSGM5WuS89C0rXOhtggI",
     authDomain: "hackathon-7f144.firebaseapp.com",
     projectId: "hackathon-7f144",
@@ -12,6 +12,6 @@ let firebaseConfig = {
     measurementId: "G-5MXWN7LVJ0"
   };
 
-  firebase.initializeApp(config);
+//var db = firebase.initializeApp(firebaseConfig).database();
 
-  export default firebase.database();
+export default firebaseConfig;

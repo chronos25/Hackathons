@@ -1,6 +1,6 @@
 import './App.css';
-import LoginCard from './login/LoginCard';
-
+//import LoginCard from './login/LoginCard';
+import ChallengeCard from './challengeCard/challegeCard';
 function App() {
   return (
     <div className="App">
@@ -8,7 +8,7 @@ function App() {
             Hackathon Internals
       </header>
       <main>
-          <LoginCard />
+          <ChallengeCard />
       </main>
     </div>
   );

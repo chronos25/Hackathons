@@ -1,7 +1,7 @@
 import './App.css';
 //import LoginCard from './login/LoginCard';
 import ChallengeCard from './challengeCard/challegeCard';
-//import ChallengeList from './challengeList/challengeList';
+import ChallengeList from './challengeList/challengeList';
 function App() {
   return (
     <div className="App">
@@ -9,7 +9,9 @@ function App() {
             Hackathon Internals
       </header>
       <main>
-          <ChallengeCard />
+          <ChallengeCard/>
+          <ChallengeList />
+
       </main>
     </div>
   );

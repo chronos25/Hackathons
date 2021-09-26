@@ -19,16 +19,13 @@ class ChallengeCard extends React.Component{
      getdoc= async ()=>{
         const snapshot = await firebase.firestore().collection('boards').get();
         console.log(snapshot.docs.length);
-        // snapshot.then(()=>{
-        //     snapshot.docs.map(doc=>console.log(doc.data()));
-        // }).catch(err=>{
-        //     console.log(err);
-        // })
-        //return snapshot.docs.map(doc => doc.data());
+        var arr=[];
         snapshot.forEach(document=>{
-            console.log(document.data());
-        })
+            //console.log(document.data());
+            arr.push(document.data());
 
+        })
+        return arr;
     }
     submitHandler=(e)=>{
         e.preventDefault();

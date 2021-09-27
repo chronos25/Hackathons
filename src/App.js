@@ -1,19 +1,26 @@
 import './App.css';
-//import LoginCard from './login/LoginCard';
 import ChallengeCard from './challengeCard/challegeCard';
 import ChallengeList from './challengeList/challengeList';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-            Hackathon Internals
-      </header>
-      <main>
-          <ChallengeCard/>
-          <ChallengeList />
+import { Route } from "react-router-dom";
 
-      </main>
-    </div>
+import Header from "./header/header";
+import LoginCard from './login/LoginCard';
+function App() {
+  return ( 
+           <div className="App">
+             <Header />
+           <main> 
+                  <Route  path='/login'>
+                   <LoginCard/>
+                   </Route>
+                 <Route  path='/create'>
+                   <ChallengeCard/>
+                   </Route>
+                 <Route  path='/detail'>
+                   <ChallengeList/>
+                   </Route>
+           </main>
+         </div>  
   );
 }
 

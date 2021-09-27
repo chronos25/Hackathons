@@ -1,8 +1,7 @@
 import React from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import './challengeCard.css';
-import firebase from "../service";
-
+import firebase from "../service"; 
 class ChallengeCard extends React.Component{
 
    constructor(props){
@@ -10,43 +9,36 @@ class ChallengeCard extends React.Component{
         this.ref = firebase.firestore().collection('boards');
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
-
+        this.onChangeTag = this.onChangeTag.bind(this);
         this.state = {title:'',
                       description:'',
+                      tag:'',
+                      vote:0,
                       submitted: false
-                    };
+                    }; 
     }
-     getdoc= async ()=>{
-        const snapshot = await firebase.firestore().collection('boards').get();
-        console.log(snapshot.docs.length);
-        var arr=[];
-        snapshot.forEach(document=>{
-            //console.log(document.data());
-            arr.push(document.data());
-
-        })
-        for(let i=0;i<arr.length;i++){
-            console.log(arr[i]);
-        }
-        return arr;
-    }
+   
     submitHandler=(e)=>{
         e.preventDefault();
         // let data = {
         //     title: this.state.title,
         //     description: this.state.description
         // }
-        const { title, description } = this.state;
+        const { title, description,tag,vote } = this.state;
         //console.log(data);
         this.ref.add({
             title,
-            description
+            description,
+            tag,
+            vote
           }).then((docRef) => {
             this.setState({
               title: '',
-              description: ''
-            });
-           // this.props.history.push("/")
+              description: '',
+              tag:'',
+              vote:0,
+              submitted:true
+            }); 
           })
           .catch((error) => {
             console.error("Error adding document: ", error);
@@ -65,10 +57,16 @@ class ChallengeCard extends React.Component{
         });
         console.log('0');
     }
-
+    onChangeTag=(event)=>{
+        this.setState({
+            tag: event.target.value
+        });
+    }
     render(){
-        return <Fragment>
+        let success = this.submitted?<h3>Submitted Successfully !</h3>:<h3> Please give a try.</h3>;
+        return <Fragment> 
         <div className='card'>
+            {success}
            Create new hackathon !
             <form onSubmit={this.submitHandler}>
                 <label className='labels'> Title </label>
@@ -84,13 +82,17 @@ class ChallengeCard extends React.Component{
                 />
 
                 <br />
+                <select>
+                    <option>Tag</option>
+                    <option value="Feature">Feature</option>
+                    <option value="Tech">Tech</option>
+                </select>
+                <br />
                 <input className ='submitButton'
                     type='submit'
                 />
-            </form>
-            <input onClick={this.getdoc} className ='submitButton'
-                    type='submit' name='get'
-                />
+               
+            </form>  
         </div>
     </Fragment>
     }

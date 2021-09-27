@@ -25,6 +25,9 @@ class ChallengeCard extends React.Component{
             arr.push(document.data());
 
         })
+        for(let i=0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
         return arr;
     }
     submitHandler=(e)=>{

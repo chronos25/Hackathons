@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react/cjs/react.development";
-import Table from 'react-bootstrap/Table';
 import firebase from "../service";
 import { Fragment } from "react";
 import "./challengeList.css";
+
+import Header from "../header/header";
 
 function ChallengeList(){
     const [data,setData] = useState([]);
@@ -24,6 +25,7 @@ function ChallengeList(){
        
     return(
         <Fragment>
+            <Header/>
             <div className="cardList">
                 <table id='list'>
                 <thead>
@@ -32,7 +34,7 @@ function ChallengeList(){
                         <td><h3>Title</h3>  </td>
                         <td><h3>Description</h3></td>
                         <td><h3>Vote       </h3></td>
-                        <td><h3>Tag        </h3></td>
+                        <td><h3>Tag        </h3></td> 
                     </tr>
                     </thead>
                 {
@@ -42,7 +44,7 @@ function ChallengeList(){
                             <td>{items.title}</td>
                             <td><h4>{items.description}</h4></td>
                             <td>{items.tag}</td>
-                            <td>{items.vote}</td>
+                            <td>{items.vote}</td> 
                         </tr>
                         </tbody>
                     ))

@@ -1,40 +1,41 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useState } from "react/cjs/react.development";
 import { Fragment } from "react/cjs/react.production.min";
 import '../login/LoginCard.css';
 
 
-class Login extends React.Component{
+function Login(){
+    let history = useHistory();
+    const [empId,setEmpId]=useState('');
 
-    constructor(props){
-        super(props);
-        this.state = {empId:''};
+    const submitHandler=()=>{
+        console.log(empId);
+        history.push("/detail");
     }
 
-    submitHandler=(event)=>{
-        event.preventDefault();
-        console.log('EmpId '+this.state.empId);
+    const changeHandler=(event)=>{
+       setEmpId( event.target.value);
     }
 
-    changeHandler=(event)=>{
-        this.setState({empId: event.target.value});
-    }
-
-    render(){
-        return <Fragment>
+        return (<Fragment>
+         <header className="header">
+            Hackathon Internals
+        </header>
         <div className='card'>
             Welcome ! Create hacks 
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={submitHandler}>
                 <label> Employee Id </label>
                 <input type="text" 
                 id="empId" name="empId"
-                onChange={this.changeHandler} />
-                <input className = 'submitButton'
-                    type='submit'
-                />
+                onChange={changeHandler} />
+                <button className='submitButton'>
+                    Login
+                </button>
             </form>
         </div>
     </Fragment>
-    }
+        )
 }
 
 export default Login;

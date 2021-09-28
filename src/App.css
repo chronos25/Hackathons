@@ -1,18 +1,4 @@
  
-
-.App-header {
-  background-color: #282c34;
-  min-height: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
- 
-
-  
 body{
 background-color: #f8f8f8;
 color: rgb(10, 10, 10);
@@ -29,10 +15,4 @@ margin: 20px auto;
 opacity: 1;
 color: #000;
 line-height: 49px;
-}
-
-/* Radio buttons */
-input[type="radio"] {
-font-size: 60px;
-
 }

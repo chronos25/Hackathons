@@ -33,8 +33,8 @@ function ChallengeList(){
                     <tr>
                         <td><h3>Title</h3>  </td>
                         <td><h3>Description</h3></td>
-                        <td><h3>Vote       </h3></td>
                         <td><h3>Tag        </h3></td> 
+                        <td><h3>Vote       </h3></td>
                     </tr>
                     </thead>
                 {

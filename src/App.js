@@ -1,10 +1,14 @@
 import './App.css';
+import React, { useEffect } from 'react'  
 import ChallengeCard from './challengeCard/challegeCard';
 import ChallengeList from './challengeList/challengeList';
 import { Route,Switch,Redirect } from "react-router-dom";
  
 import LoginCard from './login/LoginCard';
 function App() {
+  useEffect(() => {
+    document.title = "Hackathon Application"
+  }, [])
   return ( 
            <div className="App">
              

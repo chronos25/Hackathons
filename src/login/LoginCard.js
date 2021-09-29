@@ -9,9 +9,18 @@ function Login(){
     let history = useHistory();
     const [empId,setEmpId]=useState('');
 
+    const [isValid,setIsValid] = useState(true); 
     const submitHandler=()=>{
-        console.log(empId);
+        if(empId!==''){
+           
         history.push("/detail");
+        setIsValid(true);
+        } 
+        else{
+            setIsValid(false);
+            setTimeout(()=>{console.log(isValid);},2000)
+            return;
+        }
     }
 
     const changeHandler=(event)=>{
@@ -24,6 +33,7 @@ function Login(){
         </header>
         <div className='card'>
             Welcome ! Create hacks 
+            {!isValid && <p>Error ! Missing Values</p>}
             <form onSubmit={submitHandler}>
                 <label> Employee Id </label>
                 <input type="text" 

@@ -12,22 +12,34 @@ function ChallengeCard() {
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
     const [tag,setTag] = useState(''); 
+    const [isValid,setIsValid] = useState(true); 
+    
     let createDate = toString(new Date());
     const submitHandler=()=>{ 
-        firebase.firestore().collection('challenges').add({
-            title,
-            description,
-            tag,
-            vote:0,
-            createDate:createDate
-          }).then((docRef) => {
-                console.log(docRef);
-          })
-          .catch((error) => {
-            console.error("Error adding document: ", error);
-          });
-
-          history.push("/detail");
+        if(title.trim()!=='' || description.trim()!=='' || tag.trim()!=='')
+        {   
+            setIsValid(true);
+            firebase.firestore().collection('challenges').add({
+                title,
+                description,
+                tag,
+                vote:0,
+                createDate:createDate
+              }).then((docRef) => {
+                    console.log(docRef);
+              })
+              .catch((error) => {
+                console.error("Error adding document: ", error);
+              });
+    
+              history.push("/detail");
+            
+        }
+        else{
+            setIsValid(false);
+            setTimeout(()=>{console.log(isValid);},1000)
+            return;
+        }
     }
 
    const onChangeTitle=(event)=>{
@@ -67,6 +79,7 @@ function ChallengeCard() {
                     <option value="Tech">Tech</option>
                 </select>
                 <br />
+                {!isValid && <p>Error ! Missing Some Values </p>}
                 <input className ='submitButton'
                     type='submit'
                 />

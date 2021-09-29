@@ -8,6 +8,7 @@ function header(){
             <ul>
                 <li><NavLink activeClassName="active" to='/create'> Create</NavLink> </li>
                 <li> <NavLink activeClassName="active" to='/detail'> Hacks </NavLink> </li>
+                <li> <NavLink activeClassName="active" to='/login'> Logout </NavLink> </li>
             </ul>
         </nav>
     </header>
